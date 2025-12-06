@@ -22,14 +22,23 @@ if (typeof AppState === 'undefined') {
                 this.images[existingIndex] = {
                     slot: slot,
                     file: file,
-                    dataUrl: dataUrl
+                    dataUrl: dataUrl,
+                    text: this.images[existingIndex].text || ''
                 };
             } else {
                 this.images.push({
                     slot: slot,
                     file: file,
-                    dataUrl: dataUrl
+                    dataUrl: dataUrl,
+                    text: ''
                 });
+            }
+        },
+        
+        updateImageText(slot, text) {
+            const image = this.images.find(img => img.slot === slot);
+            if (image) {
+                image.text = text;
             }
         },
         

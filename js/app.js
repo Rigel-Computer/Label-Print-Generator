@@ -101,6 +101,13 @@ if (typeof App === 'undefined') {
                 </div>
                 <input type="file" id="file-input-${slot}" accept="image/*" style="display: none;">
                 
+                <div class="text-input-group">
+                    <input type="text" 
+                           id="text-bottom-${slot}" 
+                           placeholder="Beschriftung (optional)"
+                           data-slot="${slot}">
+                </div>
+                
                 <div class="preview-image-container" id="preview-${slot}">
                     <img src="" alt="Vorschau ${slot}">
                 </div>
@@ -110,6 +117,12 @@ if (typeof App === 'undefined') {
             const fileInput = field.querySelector(`#file-input-${slot}`);
             fileInput.addEventListener('change', (e) => {
                 this.handleFileUpload(e, slot);
+            });
+            
+            // Setup text input listener
+            const textBottomInput = field.querySelector(`#text-bottom-${slot}`);
+            textBottomInput.addEventListener('input', (e) => {
+                this.handleTextInput(slot, e.target.value);
             });
             
             return field;
@@ -133,6 +146,10 @@ if (typeof App === 'undefined') {
             const img = previewContainer.querySelector('img');
             img.src = dataUrl;
             previewContainer.classList.add('active');
+        },
+        
+        handleTextInput(slot, text) {
+            AppState.updateImageText(slot, text);
         },
         
         checkFormValidity() {

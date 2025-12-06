@@ -3,6 +3,7 @@
 
 # Project-specific files to ignore
 Docs/
+footer-info-section.html
 
 # Operating System Files
 .DS_Store

@@ -75,13 +75,27 @@ if (typeof Renderer === 'undefined') {
         createImageContainer(imageData) {
             const container = document.createElement('div');
             container.className = 'image-container';
+            
+            const hasText = imageData.text && imageData.text.trim();
+            
             container.style.cssText = `
                 flex: 1;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: ${hasText ? 'flex-start' : 'center'};
                 min-width: 0;
                 height: 100%;
+            `;
+            
+            // Image wrapper - 80% if text, 100% if no text
+            const imgWrapper = document.createElement('div');
+            imgWrapper.style.cssText = `
+                width: 100%;
+                height: ${hasText ? '80%' : '100%'};
+                display: flex;
+                align-items: center;
+                justify-content: center;
             `;
             
             const img = document.createElement('img');
@@ -91,7 +105,40 @@ if (typeof Renderer === 'undefined') {
                 max-height: 100%;
                 object-fit: contain;
             `;
-            container.appendChild(img);
+            imgWrapper.appendChild(img);
+            container.appendChild(imgWrapper);
+            
+            // Text - 20% if present
+            if (hasText) {
+                const textWrapper = document.createElement('div');
+                textWrapper.style.cssText = `
+                    width: 100%;
+                    height: 20%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 1mm;
+                `;
+                
+                const textEl = document.createElement('div');
+                textEl.className = 'label-text';
+                textEl.textContent = imageData.text;
+                textEl.style.cssText = `
+                    width: 100%;
+                    text-align: center;
+                    font-weight: 600;
+                    color: #1e293b;
+                    line-height: 1.2;
+                    font-size: 10px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 2;
+                    -webkit-box-orient: vertical;
+                `;
+                textWrapper.appendChild(textEl);
+                container.appendChild(textWrapper);
+            }
             
             return container;
         },
