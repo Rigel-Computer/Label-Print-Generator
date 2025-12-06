@@ -1,0 +1,57 @@
+/* Dateiname: print.css */
+/* Erstellt: 05.12.2025, 16:45 Uhr (Berlin) */
+
+@media print {
+    /* Hide UI elements */
+    .no-print,
+    .preview-header {
+        display: none !important;
+    }
+    
+    /* Hide label borders */
+    .label {
+        border: none !important;
+    }
+    
+    /* Reset page */
+    body {
+        margin: 0;
+        padding: 0;
+        background: white;
+    }
+    
+    /* Print area */
+    .print-area {
+        padding: 0;
+        background: white;
+        min-height: 0;
+    }
+    
+    /* A4 page exact dimensions */
+    .a4-page {
+        width: 210mm;
+        height: 297mm;
+        box-shadow: none;
+        page-break-after: always;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* Label grid */
+    .label-grid {
+        width: 100%;
+        height: 100%;
+    }
+    
+    /* Individual labels */
+    .label {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    /* Images */
+    .label img {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
