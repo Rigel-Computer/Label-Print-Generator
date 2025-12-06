@@ -2,246 +2,130 @@
 <!-- Dateiname: index.html -->
 <!-- Erstellt: 05.12.2025, 16:45 Uhr (Berlin) -->
 <html lang="de">
-   <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title id="page-title">Label Print Generator</title>
-      <link rel="stylesheet" href="css/main.css" />
-      <link rel="stylesheet" href="css/print.css" media="print" />
-   </head>
-   <body>
-      <div id="app">
-         <!-- Setup Screen -->
-         <div id="setup-screen" class="screen active">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Label Print Generator</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body>
+    <div id="app">
+        <!-- Setup Screen -->
+        <div id="setup-screen" class="screen active">
             <header>
-               <h1>Label Print Generator</h1>
-               <p class="subtitle">
-                  Erstelle professionelle Etiketten-Bögen für DIN A4
-               </p>
+                <h1>Label Print Generator</h1>
+                <p class="subtitle">Create professional label sheets for DIN A4</p>
             </header>
 
             <main class="setup-container">
-               <!-- Label Settings Section - MOVED TO TOP -->
-               <section class="card">
-                  <h2>1. Etiketten-Maße eingeben</h2>
-                  <p class="info">
-                     Die Angaben findest du auf der Verpackung deiner Etiketten
-                  </p>
-
-                  <div class="form-grid">
-                     <div class="form-group">
-                        <label for="label-width">Breite (mm)</label>
-                        <input
-                           type="number"
-                           id="label-width"
-                           placeholder="z.B. 97"
-                           min="10"
-                           step="0.1"
-                        />
-                     </div>
-                     <div class="form-group">
-                        <label for="label-height">Höhe (mm)</label>
-                        <input
-                           type="number"
-                           id="label-height"
-                           placeholder="z.B. 42.3"
-                           min="10"
-                           step="0.1"
-                        />
-                     </div>
-                     <div class="form-group">
-                        <label for="columns">Spalten</label>
-                        <input
-                           type="number"
-                           id="columns"
-                           placeholder="z.B. 2"
-                           min="1"
-                           max="20"
-                        />
-                     </div>
-                     <div class="form-group">
-                        <label for="rows">Zeilen</label>
-                        <input
-                           type="number"
-                           id="rows"
-                           placeholder="z.B. 6"
-                           min="1"
-                           max="30"
-                        />
-                     </div>
-                  </div>
-               </section>
-
-               <!-- Images per Label Section - NEW -->
-               <section class="card">
-                  <h2>2. Anzahl Bilder pro Etikett</h2>
-                  <div class="images-per-label-grid">
-                     <label class="radio-card">
-                        <input
-                           type="radio"
-                           name="images-per-label"
-                           value="1"
-                           checked
-                        />
-                        <div class="radio-content">
-                           <span class="radio-title">1 Bild</span>
+                <!-- Label Settings Section - MOVED TO TOP -->
+                <section class="card">
+                    <h2>1. Enter Label Dimensions</h2>
+                    <p class="info">You'll find these specifications on your label package</p>
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="label-width">Width (mm)</label>
+                            <input type="number" id="label-width" placeholder="e.g. 97" min="10" step="0.1">
                         </div>
-                     </label>
-                     <label class="radio-card">
-                        <input type="radio" name="images-per-label" value="2" />
-                        <div class="radio-content">
-                           <span class="radio-title">2 Bilder</span>
+                        <div class="form-group">
+                            <label for="label-height">Height (mm)</label>
+                            <input type="number" id="label-height" placeholder="e.g. 42.3" min="10" step="0.1">
                         </div>
-                     </label>
-                     <label class="radio-card">
-                        <input type="radio" name="images-per-label" value="3" />
-                        <div class="radio-content">
-                           <span class="radio-title">3 Bilder</span>
+                        <div class="form-group">
+                            <label for="columns">Columns</label>
+                            <input type="number" id="columns" placeholder="e.g. 2" min="1" max="20">
                         </div>
-                     </label>
-                  </div>
-               </section>
+                        <div class="form-group">
+                            <label for="rows">Rows</label>
+                            <input type="number" id="rows" placeholder="e.g. 6" min="1" max="30">
+                        </div>
+                    </div>
+                </section>
 
-               <!-- Image Upload Section - DYNAMIC -->
-               <section class="card">
-                  <h2>3. Grafiken hochladen</h2>
-                  <div
-                     id="upload-fields-container"
-                     class="upload-fields-container"
-                  >
-                     <!-- Dynamically generated upload fields -->
-                  </div>
-               </section>
+                <!-- Images per Label Section - NEW -->
+                <section class="card">
+                    <h2>2. Number of Images per Label</h2>
+                    <div class="images-per-label-grid">
+                        <label class="radio-card">
+                            <input type="radio" name="images-per-label" value="1" checked>
+                            <div class="radio-content">
+                                <span class="radio-title">1 Image</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="images-per-label" value="2">
+                            <div class="radio-content">
+                                <span class="radio-title">2 Images</span>
+                            </div>
+                        </label>
+                        <label class="radio-card">
+                            <input type="radio" name="images-per-label" value="3">
+                            <div class="radio-content">
+                                <span class="radio-title">3 Images</span>
+                            </div>
+                        </label>
+                    </div>
+                </section>
 
-               <button id="preview-btn" class="btn-primary" disabled>
-                  <span>Vorschau generieren</span>
-                  <svg
-                     width="20"
-                     height="20"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                  >
-                     <polyline points="9 18 15 12 9 6"></polyline>
-                  </svg>
-               </button>
+                <!-- Image Upload Section - DYNAMIC -->
+                <section class="card">
+                    <h2>3. Upload Graphics</h2>
+                    <div id="upload-fields-container" class="upload-fields-container">
+                        <!-- Dynamically generated upload fields -->
+                    </div>
+                </section>
+
+                <button id="preview-btn" class="btn-primary" disabled>
+                    <span>Generate Preview</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
             </main>
-
+            
             <!-- Footer Info Section -->
             <div class="footer-info no-print">
-               <p>
-                  Feel free to use this tool and share it with your teams. It's
-                  completely free and open source.
-               </p>
-               <!--
-    File: footer-info-section.html
-    Last modified: 04.12.2025 14:10 MEZ
--->
-
-               <!-- Footer Info Section - Insert before closing container div -->
-               <div class="footer-info">
-                  <p>
-                     Feel free to use this tool and share it with your teams.
-                     It's completely free and open source.
-                  </p>
-                  <p>
-                     Built with AI-augmented development by Rigel-Computer -
-                     Software & Design<br />
-                     Need a custom solution? →
-                     <a href="https://www.rigel-computer.com/kontakt"
-                        >Get in touch</a
-                     >
-                     |
-                     <a href="https://www.linkedin.com/in/christoph-schweres"
-                        >LinkedIn</a
-                     >
-                  </p>
-               </div>
-
-               <!-- CSS Styling for Footer Info -->
-               <style>
-                  .footer-info {
-                     margin-top: 30px;
-                     padding-top: 20px;
-                     border-top: 1px solid #bdc3c7;
-                     text-align: center;
-                  }
-
-                  .footer-info p {
-                     font-size: 0.9em;
-                     color: #7f8c8d;
-                     margin: 10px 0;
-                     line-height: 1.6;
-                  }
-
-                  .footer-info a {
-                     color: #3498db;
-                     text-decoration: none;
-                     font-weight: 600;
-                  }
-
-                  .footer-info a:hover {
-                     text-decoration: underline;
-                  }
-               </style>
-
-               <!--
-USAGE INSTRUCTIONS:
-1. Insert this section in timezone-converter.html BEFORE the closing </div> of the container
-2. Place it AFTER the disclaimer section
-3. All links and company info are already configured
--->
+                <p>Feel free to use this tool and share it with your teams. It's completely free and open source.</p>
+                <p>Built with AI-augmented development by Rigel-Computer - Software & Design<br>
+                Need a custom solution? → 
+                <a href="https://www.rigel-computer.com/kontakt">Get in touch</a> | 
+                <a href="https://www.linkedin.com/in/christoph-schweres">LinkedIn</a></p>
             </div>
-         </div>
+        </div>
 
-         <!-- Preview Screen -->
-         <div id="preview-screen" class="screen">
+        <!-- Preview Screen -->
+        <div id="preview-screen" class="screen">
             <header class="preview-header no-print">
-               <button id="back-btn" class="btn-secondary">
-                  <svg
-                     width="20"
-                     height="20"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                  >
-                     <polyline points="15 18 9 12 15 6"></polyline>
-                  </svg>
-                  <span>Zurück zur Eingabe</span>
-               </button>
-               <h2>Vorschau</h2>
-               <div style="width: 150px"></div>
+                <button id="back-btn" class="btn-secondary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>Back to Setup</span>
+                </button>
+                <h2>Preview</h2>
+                <div style="width: 150px;"></div>
             </header>
             <div id="print-area" class="print-area">
-               <!-- Generated A4 page with labels -->
+                <!-- Generated A4 page with labels -->
             </div>
             <div class="print-button-container no-print">
-               <button id="print-btn" class="btn-primary">
-                  <svg
-                     width="20"
-                     height="20"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                  >
-                     <polyline points="6 9 6 2 18 2 18 9"></polyline>
-                     <path
-                        d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"
-                     ></path>
-                     <rect x="6" y="14" width="12" height="8"></rect>
-                  </svg>
-                  <span>Drucken</span>
-               </button>
+                <button id="print-btn" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                        <rect x="6" y="14" width="12" height="8"></rect>
+                    </svg>
+                    <span>Print</span>
+                </button>
             </div>
-         </div>
-      </div>
+        </div>
+    </div>
 
-      <script src="js/storage.js"></script>
-      <script src="js/fileHandler.js"></script>
-      <script src="js/renderer.js"></script>
-      <script src="js/app.js"></script>
-   </body>
+    <script src="js/storage.js"></script>
+    <script src="js/fileHandler.js"></script>
+    <script src="js/renderer.js"></script>
+    <script src="js/app.js"></script>
+</body>
 </html>
