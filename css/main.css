@@ -534,3 +534,83 @@ header h1 {
 .footer-info a:hover {
     text-decoration: underline;
 }
+
+/* Grid Test Notice */
+.grid-notice {
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+
+.grid-notice-content h3 {
+    color: #0c4a6e;
+    font-size: 1.125rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.grid-notice-content p {
+    color: #334155;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.6;
+}
+
+.grid-link {
+    display: inline-block;
+    background: #0ea5e9;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: var(--spacing-sm);
+    transition: background 0.2s;
+}
+
+.grid-link:hover {
+    background: #0284c7;
+}
+
+.close-notice {
+    background: transparent;
+    color: #64748b;
+    border: 1px solid #cbd5e1;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.close-notice:hover {
+    background: #f1f5f9;
+    color: #334155;
+}
+
+/* Grid Toggle Button */
+.section-header-with-toggle {
+    position: relative;
+    height: 0;
+    margin-bottom: 0;
+}
+
+.grid-toggle-btn {
+    position: absolute;
+    right: 0;
+    top: -45px;
+    background: #f8fafc;
+    color: #94a3b8;
+    border: 1px solid #e2e8f0;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.grid-toggle-btn:hover {
+    background: #f1f5f9;
+    color: #64748b;
+    border-color: #cbd5e1;
+}

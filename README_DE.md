@@ -10,22 +10,23 @@ Ein einfaches, browserbasiertes Tool zur Erstellung identischer Etiketten auf DI
 Für den Spezialfall, wenn alle Etiketten auf einem Bogen identisch sein sollen – bietet dieses Tool eine schlanke Alternative zu umfassender Desktop-Software wie Avery Zweckform.
 
 **Perfekt für:**
-- Produktetiketten (kleine Manufakturen, Etsy-Seller)
-- Geschenkanhänger (Events, Feiertage)
-- Adressaufkleber (Absender-Labels für Briefe/Pakete)
-- Event-Badges (Meetups, Workshops)
-- Inventar-Labels (Büro, Werkstatt, Lager)
+
+-  Produktetiketten (kleine Manufakturen, Etsy-Seller)
+-  Geschenkanhänger (Events, Feiertage)
+-  Adressaufkleber (Absender-Labels für Briefe/Pakete)
+-  Event-Badges (Meetups, Workshops)
+-  Inventar-Labels (Büro, Werkstatt, Lager)
 
 ## ✨ Features
 
-- **Keine Installation nötig** – Läuft komplett im Browser
-- **Bis zu 3 Bilder pro Etikett** – Nebeneinander mit automatisch 5mm Abstand
-- **Optionale Beschriftung** – Individuelle Beschriftung pro Bild (oder leer lassen)
-- **Automatisches Layout** – 100% Bildhöhe ohne Text, 80/20 Split mit Text
-- **Automatische Rand-Berechnung** – Etikettenmaße eingeben, Ränder werden automatisch berechnet
-- **Druckvorschau** – Sichtbare Rahmen (nicht gedruckt) zeigen Etikettengrenzen
-- **Datenschutz-fokussiert** – Alle Verarbeitung lokal, keine Daten verlassen das Gerät
-- **Cross-Browser kompatibel** – Funktioniert in Chrome, Firefox, Safari, Edge
+-  **Keine Installation nötig** – Läuft komplett im Browser
+-  **Bis zu 3 Bilder pro Etikett** – Nebeneinander mit automatisch 5mm Abstand
+-  **Optionale Beschriftung** – Individuelle Beschriftung pro Bild (oder leer lassen)
+-  **Automatisches Layout** – 100% Bildhöhe ohne Text, 80/20 Split mit Text
+-  **Automatische Rand-Berechnung** – Etikettenmaße eingeben, Ränder werden automatisch berechnet
+-  **Druckvorschau** – Sichtbare Rahmen (nicht gedruckt) zeigen Etikettengrenzen
+-  **Datenschutz-fokussiert** – Alle Verarbeitung lokal, keine Daten verlassen das Gerät
+-  **Cross-Browser kompatibel** – Funktioniert in Chrome, Firefox, Safari, Edge
 
 ## 🚀 Schnellstart
 
@@ -40,38 +41,46 @@ Für den Spezialfall, wenn alle Etiketten auf einem Bogen identisch sein sollen 
 ## 📋 So funktioniert's
 
 ### Schritt 1: Etikettenmaße eingeben
+
 Die Spezifikationen auf der Etikettenverpackung finden:
-- Breite (mm)
-- Höhe (mm)  
-- Spalten
-- Zeilen
+
+-  Breite (mm)
+-  Höhe (mm)
+-  Spalten
+-  Zeilen
 
 ### Schritt 2: Bilder hochladen
+
 1-3 Bilder pro Etikett wählen. Upload-Felder erscheinen entsprechend der Auswahl.
 
 ### Schritt 3: Optionale Beschriftung
+
 Jedes Bild kann eine eigene Beschriftung darunter erhalten – oder unbeschriftet bleiben. Vollständig flexibel.
 
 ### Schritt 4: Drucken
+
 Das Tool erledigt automatisch:
-- Berechnung der Ränder zur Zentrierung auf A4 (210×297mm)
-- Anordnung der Bilder mit 5mm Abstand
-- Layout-Anpassung (100% Bild oder 80/20 Split)
-- Druckfertige Vorschau generieren
+
+-  Berechnung der Ränder zur Zentrierung auf A4 (210×297mm)
+-  Anordnung der Bilder mit 5mm Abstand
+-  Layout-Anpassung (100% Bild oder 80/20 Split)
+-  Druckfertige Vorschau generieren
 
 ## 🛠️ Technische Details
 
 **Technologie-Stack:**
-- Pures HTML, CSS, JavaScript
-- Keine Frameworks, keine Dependencies
-- Keine Server-Kommunikation
-- Läuft komplett clientseitig
+
+-  Pures HTML, CSS, JavaScript
+-  Keine Frameworks, keine Dependencies
+-  Keine Server-Kommunikation
+-  Läuft komplett clientseitig
 
 **Architektur:**
-- `storage.js` – Zustandsverwaltung
-- `renderer.js` – Drucklayout-Berechnung
-- `app.js` – UI-Logik
-- `fileHandler.js` – Datei-Upload-Handling
+
+-  `storage.js` – Zustandsverwaltung
+-  `renderer.js` – Drucklayout-Berechnung
+-  `app.js` – UI-Logik
+-  `fileHandler.js` – Datei-Upload-Handling
 
 **Kern-Algorithmus: Rand-Berechnung**
 
@@ -79,14 +88,14 @@ Das Tool erledigt automatisch:
 calculateMargins() {
     const a4Width = 210;   // mm
     const a4Height = 297;  // mm
-    
+
     const totalLabelsWidth = columns * labelWidth;
     const totalLabelsHeight = rows * labelHeight;
-    
+
     const marginLR = (a4Width - totalLabelsWidth) / 2;
     const marginTB = (a4Height - totalLabelsHeight) / 2;
-    
-    return { left: marginLR, right: marginLR, 
+
+    return { left: marginLR, right: marginLR,
              top: marginTB, bottom: marginTB };
 }
 ```
@@ -97,13 +106,14 @@ Ergebnis: Perfekt zentrierte Etiketten, unabhängig vom Format.
 
 Das Tool verfügt über dynamische Layout-Anpassung:
 
-- **Ohne Beschriftung:** Bild nutzt volle Etikettenhöhe (100%)
-- **Mit Beschriftung:** Automatischer 80/20 Split (80% Bild, 20% Text)
+-  **Ohne Beschriftung:** Bild nutzt volle Etikettenhöhe (100%)
+-  **Mit Beschriftung:** Automatischer 80/20 Split (80% Bild, 20% Text)
 
 Dies funktioniert individuell pro Bild. Ein Etikett mit drei Bildern kann unterschiedliche Layouts haben:
-- Bild 1: Kein Text (100% Höhe)
-- Bild 2: Mit Text (80/20 Split)
-- Bild 3: Kein Text (100% Höhe)
+
+-  Bild 1: Kein Text (100% Höhe)
+-  Bild 2: Mit Text (80/20 Split)
+-  Bild 3: Kein Text (100% Höhe)
 
 Alles automatisch, keine manuelle Anpassung nötig.
 
@@ -111,11 +121,11 @@ Alles automatisch, keine manuelle Anpassung nötig.
 
 Dieses Tool fokussiert sich auf einen spezifischen Anwendungsfall:
 
-- ✅ Alle Etiketten auf dem Bogen sind **identisch**
-- ❌ Keine unterschiedlichen Inhalte pro Etikett
-- ❌ Kein Mail-Merge aus Datenbanken
-- ❌ Keine Template-Bibliothek
-- ❌ Keine komplexen Multi-Layer-Layouts
+-  ✅ Alle Etiketten auf dem Bogen sind **identisch**
+-  ❌ Keine unterschiedlichen Inhalte pro Etikett
+-  ❌ Kein Mail-Merge aus Datenbanken
+-  ❌ Keine Template-Bibliothek
+-  ❌ Keine komplexen Multi-Layer-Layouts
 
 Für diese Anforderungen bleibt etablierte Desktop-Software die bessere Wahl.
 
@@ -141,10 +151,11 @@ Kategorie-Icon + Artikelnummer + Beschreibung.
 Beiträge sind willkommen! Dies ist ein Open-Source-Projekt nach dem KISS-Prinzip (Keep It Simple, Stupid).
 
 **Richtlinien:**
-- Einfach halten – Feature-Bloat vermeiden
-- Keine Dependencies hinzufügen
-- Cross-Browser-Kompatibilität sicherstellen
-- Gründlich testen vor Pull Requests
+
+-  Einfach halten – Feature-Bloat vermeiden
+-  Keine Dependencies hinzufügen
+-  Cross-Browser-Kompatibilität sicherstellen
+-  Gründlich testen vor Pull Requests
 
 ## 🧠 KI-unterstützte Entwicklung
 
@@ -163,9 +174,9 @@ Benötigen Sie eine maßgeschneiderte Lösung für Ihre spezifischen Anforderung
 
 **Rigel-Computer – Software & Design**
 
-- Individuelle Webanwendungen
-- Tool-Entwicklung
-- KI-unterstützte Software-Lösungen
+-  Individuelle Webanwendungen
+-  Tool-Entwicklung
+-  KI-unterstützte Software-Lösungen
 
 → [Kontakt aufnehmen](https://www.rigel-computer.com/kontakt)  
 → [LinkedIn](https://www.linkedin.com/in/christoph-schweres)
@@ -173,3 +184,11 @@ Benötigen Sie eine maßgeschneiderte Lösung für Ihre spezifischen Anforderung
 ---
 
 **Gebaut mit ❤️ und KI-unterstützter Entwicklung**
+
+---
+
+Built with AI-augmented development
+
+Provided by _Rigel-Computer – Software & Design_
+
+Need professional AI solutions or custom tool development? → [Get in touch](https://www.rigel-computer.com/kontakt) | [LinkedIn](https://www.linkedin.com/in/christoph-schweres)

@@ -10,22 +10,23 @@ A simple, browser-based tool for creating identical labels on DIN A4 sheets. No 
 For the specific case when all labels on one sheet need to be identical – this tool provides a lean alternative to comprehensive desktop software like Avery Zweckform.
 
 **Perfect for:**
-- Product labels (small manufacturers, Etsy sellers)
-- Gift tags (events, holidays)
-- Address labels (sender labels for letters/packages)
-- Event badges (meetups, workshops)
-- Inventory labels (office, workshop, warehouse)
+
+-  Product labels (small manufacturers, Etsy sellers)
+-  Gift tags (events, holidays)
+-  Address labels (sender labels for letters/packages)
+-  Event badges (meetups, workshops)
+-  Inventory labels (office, workshop, warehouse)
 
 ## ✨ Features
 
-- **No Installation Required** – Runs entirely in the browser
-- **Up to 3 Images per Label** – Side by side with automatic 5mm spacing
-- **Optional Captions** – Individual caption per image (or leave blank)
-- **Automatic Layout** – 100% image height without text, 80/20 split with text
-- **Automatic Margin Calculation** – Enter label dimensions, margins are calculated automatically
-- **Print Preview** – Visual borders (not printed) show label boundaries
-- **Privacy-Focused** – All processing happens locally, no data leaves your device
-- **Cross-Browser Compatible** – Works on Chrome, Firefox, Safari, Edge
+-  **No Installation Required** – Runs entirely in the browser
+-  **Up to 3 Images per Label** – Side by side with automatic 5mm spacing
+-  **Optional Captions** – Individual caption per image (or leave blank)
+-  **Automatic Layout** – 100% image height without text, 80/20 split with text
+-  **Automatic Margin Calculation** – Enter label dimensions, margins are calculated automatically
+-  **Print Preview** – Visual borders (not printed) show label boundaries
+-  **Privacy-Focused** – All processing happens locally, no data leaves your device
+-  **Cross-Browser Compatible** – Works on Chrome, Firefox, Safari, Edge
 
 ## 🚀 Quick Start
 
@@ -40,38 +41,46 @@ For the specific case when all labels on one sheet need to be identical – this
 ## 📋 How It Works
 
 ### Step 1: Enter Label Dimensions
+
 Find the specifications on your label package:
-- Width (mm)
-- Height (mm)  
-- Columns
-- Rows
+
+-  Width (mm)
+-  Height (mm)
+-  Columns
+-  Rows
 
 ### Step 2: Upload Images
+
 Choose 1-3 images per label. Upload fields appear based on your selection.
 
 ### Step 3: Optional Captions
+
 Each image can have its own caption below it – or remain uncaptioned. Completely flexible.
 
 ### Step 4: Print
+
 The tool automatically:
-- Calculates margins to center labels on A4 (210×297mm)
-- Arranges images with 5mm spacing
-- Adjusts layout (100% image or 80/20 split)
-- Generates print-ready preview
+
+-  Calculates margins to center labels on A4 (210×297mm)
+-  Arranges images with 5mm spacing
+-  Adjusts layout (100% image or 80/20 split)
+-  Generates print-ready preview
 
 ## 🛠️ Technical Details
 
 **Technology Stack:**
-- Pure HTML, CSS, JavaScript
-- No frameworks, no dependencies
-- No server communication
-- Runs entirely client-side
+
+-  Pure HTML, CSS, JavaScript
+-  No frameworks, no dependencies
+-  No server communication
+-  Runs entirely client-side
 
 **Architecture:**
-- `storage.js` – State management
-- `renderer.js` – Print layout calculation
-- `app.js` – UI logic
-- `fileHandler.js` – File upload handling
+
+-  `storage.js` – State management
+-  `renderer.js` – Print layout calculation
+-  `app.js` – UI logic
+-  `fileHandler.js` – File upload handling
 
 **Key Algorithm: Margin Calculation**
 
@@ -79,14 +88,14 @@ The tool automatically:
 calculateMargins() {
     const a4Width = 210;   // mm
     const a4Height = 297;  // mm
-    
+
     const totalLabelsWidth = columns * labelWidth;
     const totalLabelsHeight = rows * labelHeight;
-    
+
     const marginLR = (a4Width - totalLabelsWidth) / 2;
     const marginTB = (a4Height - totalLabelsHeight) / 2;
-    
-    return { left: marginLR, right: marginLR, 
+
+    return { left: marginLR, right: marginLR,
              top: marginTB, bottom: marginTB };
 }
 ```
@@ -97,13 +106,14 @@ Result: Perfectly centered labels, regardless of format.
 
 The tool features dynamic layout adjustment:
 
-- **Without caption:** Image uses full label height (100%)
-- **With caption:** Automatic 80/20 split (80% image, 20% text)
+-  **Without caption:** Image uses full label height (100%)
+-  **With caption:** Automatic 80/20 split (80% image, 20% text)
 
 This works individually per image. A label with three images can have different layouts for each:
-- Image 1: No text (100% height)
-- Image 2: With text (80/20 split)
-- Image 3: No text (100% height)
+
+-  Image 1: No text (100% height)
+-  Image 2: With text (80/20 split)
+-  Image 3: No text (100% height)
 
 All automatic, no manual adjustment needed.
 
@@ -111,11 +121,11 @@ All automatic, no manual adjustment needed.
 
 This tool focuses on one specific use case:
 
-- ✅ All labels on the sheet are **identical**
-- ❌ No different content per label
-- ❌ No mail merge from databases
-- ❌ No template library
-- ❌ No complex multi-layer layouts
+-  ✅ All labels on the sheet are **identical**
+-  ❌ No different content per label
+-  ❌ No mail merge from databases
+-  ❌ No template library
+-  ❌ No complex multi-layer layouts
 
 For these requirements, established desktop software remains the better choice.
 
@@ -141,10 +151,11 @@ Category icon + item number + description.
 Contributions are welcome! This is an open-source project built on the KISS (Keep It Simple, Stupid) principle.
 
 **Guidelines:**
-- Keep it simple – resist feature bloat
-- Maintain zero dependencies
-- Ensure cross-browser compatibility
-- Test thoroughly before submitting PRs
+
+-  Keep it simple – resist feature bloat
+-  Maintain zero dependencies
+-  Ensure cross-browser compatibility
+-  Test thoroughly before submitting PRs
 
 ## 🧠 AI-Augmented Development
 
@@ -163,9 +174,9 @@ Need a custom solution tailored to your specific requirements?
 
 **Rigel-Computer – Software & Design**
 
-- Custom web applications
-- Tool development
-- AI-augmented software solutions
+-  Custom web applications
+-  Tool development
+-  AI-augmented software solutions
 
 → [Get in touch](https://www.rigel-computer.com/kontakt)  
 → [LinkedIn](https://www.linkedin.com/in/christoph-schweres)
@@ -173,3 +184,11 @@ Need a custom solution tailored to your specific requirements?
 ---
 
 **Built with ❤️ and AI-augmented development**
+
+---
+
+Built with AI-augmented development
+
+Provided by _Rigel-Computer – Software & Design_
+
+Need professional AI solutions or custom tool development? → [Get in touch](https://www.rigel-computer.com/kontakt) | [LinkedIn](https://www.linkedin.com/in/christoph-schweres)

@@ -26,6 +26,27 @@ if (typeof App === "undefined") {
          this.setupEventListeners();
          this.generateUploadFields(1); // Start with 1 image
          this.checkFormValidity(); // Trigger validation with debug values
+         this.initGridNotice(); // Check if notice should be shown
+      },
+
+      initGridNotice() {
+         const hasSeenNotice = localStorage.getItem("gridNoticeShown");
+         if (!hasSeenNotice) {
+            document.getElementById("grid-notice").style.display = "block";
+         } else {
+            document.getElementById("grid-toggle-btn").style.display = "block";
+         }
+      },
+
+      closeGridNotice() {
+         document.getElementById("grid-notice").style.display = "none";
+         document.getElementById("grid-toggle-btn").style.display = "block";
+         localStorage.setItem("gridNoticeShown", "true");
+      },
+
+      showGridNotice() {
+         document.getElementById("grid-notice").style.display = "block";
+         document.getElementById("grid-toggle-btn").style.display = "none";
       },
 
       setupEventListeners() {
@@ -101,6 +122,14 @@ if (typeof App === "undefined") {
             const existingImage = AppState.getImageBySlot(i);
             if (existingImage && existingImage.dataUrl) {
                this.showPreviewImage(i, existingImage.dataUrl);
+
+               // Restore text if exists
+               if (existingImage.text) {
+                  const textInput = document.getElementById(`text-bottom-${i}`);
+                  if (textInput) {
+                     textInput.value = existingImage.text;
+                  }
+               }
             }
          }
 
