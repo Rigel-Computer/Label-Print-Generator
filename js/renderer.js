@@ -25,6 +25,7 @@ if (typeof Renderer === "undefined") {
                 grid-template-columns: repeat(${AppState.settings.columns}, ${AppState.settings.labelWidth}mm);
                 grid-template-rows: repeat(${AppState.settings.rows}, ${AppState.settings.labelHeight}mm);
                 padding: ${margins.top}mm ${margins.right}mm ${margins.bottom}mm ${margins.left}mm;
+                height: 100%;
                 box-sizing: border-box;
             `;
 

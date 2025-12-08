@@ -2,12 +2,6 @@
 /* Erstellt: 05.12.2025, 16:45 Uhr (Berlin) */
 
 @media print {
-   /* Force exact A4 size */
-   @page {
-      size: A4 portrait;
-      margin: 0;
-   }
-
    /* Hide UI elements */
    .no-print,
    .preview-header {
@@ -33,16 +27,14 @@
       min-height: 0;
    }
 
-   /* A4 page exact dimensions - force no scaling */
+   /* A4 page exact dimensions */
    .a4-page {
-      width: 210mm !important;
-      height: 297mm !important;
+      width: 210mm;
+      height: 297mm;
       box-shadow: none;
       page-break-after: always;
-      margin: 0 !important;
-      padding: 0 !important;
-      transform: scale(1) !important;
-      transform-origin: top left !important;
+      margin: 0;
+      padding: 0;
    }
 
    /* Label grid */

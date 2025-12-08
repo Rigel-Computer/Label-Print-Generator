@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Label Grid Test - Print Alignment Tool</title>
+      <style>
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+         }
+
+         body {
+            background: #f0f0f0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+         }
+
+         .no-print {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+         }
+
+         h1 {
+            margin-bottom: 10px;
+            color: #333;
+         }
+
+         .instructions {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+         }
+
+         .form-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+         }
+
+         .form-group {
+            display: flex;
+            flex-direction: column;
+         }
+
+         label {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: #333;
+         }
+
+         input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+         }
+
+         button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-right: 10px;
+         }
+
+         button:hover {
+            background: #1d4ed8;
+         }
+
+         .a4-page {
+            width: 210mm;
+            height: 297mm;
+            background: white;
+            margin: 0 auto;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+         }
+
+         .label-grid {
+            display: grid;
+         }
+
+         .label {
+            border: 1px solid #000;
+            box-sizing: border-box;
+         }
+
+         @media print {
+            body {
+               background: white;
+               padding: 0;
+            }
+
+            .no-print {
+               display: none !important;
+            }
+
+            .a4-page {
+               width: 210mm;
+               height: 297mm;
+               box-shadow: none;
+               margin: 0;
+               page-break-after: always;
+            }
+
+            .label {
+               border: 1px solid #000 !important;
+               box-shadow: inset 0 0 0 1px #000 !important;
+               -webkit-print-color-adjust: exact !important;
+               print-color-adjust: exact !important;
+               color-adjust: exact !important;
+            }
+
+            @page {
+               size: A4 portrait;
+               margin: 0;
+            }
+         }
+      </style>
+   </head>
+   <body>
+      <div class="no-print">
+         <h1>Label Grid Test - Print Alignment Tool</h1>
+         <p class="instructions">
+            <strong>Instructions:</strong> Enter your label dimensions below,
+            generate the grid, and print it on regular paper. Place this test
+            print over your actual label sheet to verify alignment before
+            printing your final labels.
+         </p>
+
+         <div class="form-grid">
+            <div class="form-group">
+               <label for="label-width">Width (mm)</label>
+               <input
+                  type="number"
+                  id="label-width"
+                  value="97"
+                  min="10"
+                  step="0.1"
+               />
+            </div>
+            <div class="form-group">
+               <label for="label-height">Height (mm)</label>
+               <input
+                  type="number"
+                  id="label-height"
+                  value="42.3"
+                  min="10"
+                  step="0.1"
+               />
+            </div>
+            <div class="form-group">
+               <label for="columns">Columns</label>
+               <input type="number" id="columns" value="2" min="1" max="20" />
+            </div>
+            <div class="form-group">
+               <label for="rows">Rows</label>
+               <input type="number" id="rows" value="6" min="1" max="30" />
+            </div>
+         </div>
+
+         <button onclick="generateGrid()">Generate Grid</button>
+         <button onclick="window.print()">Print Grid</button>
+      </div>
+
+      <div id="print-area"></div>
+
+      <script>
+         function calculateMargins(labelWidth, labelHeight, columns, rows) {
+            const a4Width = 210;
+            const a4Height = 297;
+
+            const totalLabelsWidth = columns * labelWidth;
+            const totalLabelsHeight = rows * labelHeight;
+
+            const marginLR = (a4Width - totalLabelsWidth) / 2;
+            const marginTB = (a4Height - totalLabelsHeight) / 2;
+
+            return {
+               left: marginLR,
+               right: marginLR,
+               top: marginTB,
+               bottom: marginTB,
+            };
+         }
+
+         function generateGrid() {
+            const labelWidth = parseFloat(
+               document.getElementById("label-width").value
+            );
+            const labelHeight = parseFloat(
+               document.getElementById("label-height").value
+            );
+            const columns = parseInt(document.getElementById("columns").value);
+            const rows = parseInt(document.getElementById("rows").value);
+
+            if (!labelWidth || !labelHeight || !columns || !rows) {
+               alert("Please fill in all fields");
+               return;
+            }
+
+            const margins = calculateMargins(
+               labelWidth,
+               labelHeight,
+               columns,
+               rows
+            );
+
+            const printArea = document.getElementById("print-area");
+            printArea.innerHTML = "";
+
+            const page = document.createElement("div");
+            page.className = "a4-page";
+
+            const grid = document.createElement("div");
+            grid.className = "label-grid";
+            grid.style.cssText = `
+                display: grid;
+                grid-template-columns: repeat(${columns}, ${labelWidth}mm);
+                grid-template-rows: repeat(${rows}, ${labelHeight}mm);
+                padding: ${margins.top}mm ${margins.right}mm ${margins.bottom}mm ${margins.left}mm;
+                box-sizing: border-box;
+            `;
+
+            const totalLabels = columns * rows;
+            for (let i = 0; i < totalLabels; i++) {
+               const label = document.createElement("div");
+               label.className = "label";
+               label.style.cssText = `
+                    width: ${labelWidth}mm;
+                    height: ${labelHeight}mm;
+                    border: 1px solid #000;
+                    box-sizing: border-box;
+                `;
+               grid.appendChild(label);
+            }
+
+            page.appendChild(grid);
+            printArea.appendChild(page);
+         }
+
+         // Generate on load with default values
+         window.addEventListener("load", generateGrid);
+      </script>
+   </body>
+</html>
